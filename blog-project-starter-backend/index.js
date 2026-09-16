@@ -78,4 +78,7 @@ app.post('/api/blogs', async (req, res) => {
 });
 
 // Start server
-app.listen(5000, () => console.log('Server running on port 5000'));
+// Render assigns its own port through PORT — the app must listen on that,
+// not a hardcoded port, or Render can't route traffic to it.
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

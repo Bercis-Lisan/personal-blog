@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 import Footer from './common/Footer';
 import auth from '../config/firebase';
+import { API_URL } from '../config/api';
 function Blogs() {
 
     const [blogs, setBlogs] = useState([]);
@@ -16,7 +17,7 @@ function Blogs() {
                 if(user.uid === "SracrRaZhdVxtTXLLOIBh5kjFuG2"){
                     setadmin(true)
                 }
-                axios.get("http://localhost:5000/api/blogs").then((res) => {
+                axios.get(`${API_URL}/api/blogs`).then((res) => {
                     setBlogs(res.data)
                 }).catch(() => {
                     console.log("Error fetching data")
@@ -38,10 +39,10 @@ function Blogs() {
 
     const handleLike = async (blog_id) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/api/blogs/like/${blog_id}`);
+            const response = await axios.patch(`${API_URL}/api/blogs/like/${blog_id}`);
             // After successfully updating the likes count in the backend, fetch the updated list of blogs
             if (response.status === 200) {
-                axios.get("http://localhost:5000/api/blogs").then((res) => {
+                axios.get(`${API_URL}/api/blogs`).then((res) => {
                     console.log(res.data)
                     setBlogs(res.data)
                 }).catch(() => {
@@ -60,10 +61,10 @@ function Blogs() {
 
 
         const likes = 0
-        axios.post("http://localhost:5000/api/blogs", { newTitle, date, newContent, likes }).then((res) => {
+        axios.post(`${API_URL}/api/blogs`, { newTitle, date, newContent, likes }).then((res) => {
             console.log(res.data)
 
-            axios.get("http://localhost:5000/api/blogs").then((res) => {
+            axios.get(`${API_URL}/api/blogs`).then((res) => {
                 console.log(res.data)
                 setBlogs(res.data)
             }).catch(() => {
