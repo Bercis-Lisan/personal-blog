@@ -12,7 +12,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect(`${MONGODB}`).then(()=>{
+mongoose.connect(`${MONGODB_URI}`).then(()=>{
     console.log("Connection Successfull")
 })
 
