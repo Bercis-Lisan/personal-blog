@@ -66,7 +66,7 @@ function Home() {
             </section>
 
             <section className='proof-section'>
-                <div className='stat-list'>
+                <div className='stat-list flex ' >
                     <div className='stat-card'><strong>15+</strong><span>Projects<br />completed</span>
                     </div>
                     <div className='stat-card'><strong>12+</strong><span>Technologies<br />learned</span>
