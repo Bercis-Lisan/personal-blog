@@ -12,7 +12,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect('mongodb://bercislisan569_db_user:9Yvjbft0xc3b5aND@ac-i4u2trw-shard-00-00.7lybyz7.mongodb.net:27017,ac-i4u2trw-shard-00-01.7lybyz7.mongodb.net:27017,ac-i4u2trw-shard-00-02.7lybyz7.mongodb.net:27017/personalblog?ssl=true&replicaSet=atlas-5ffr14-shard-0&authSource=admin&appName=Cluster0').then(()=>{
+mongoose.connect(`${MONGODB}`).then(()=>{
     console.log("Connection Successfull")
 })
 
